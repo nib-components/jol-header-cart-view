@@ -1,5 +1,6 @@
 {
   "name": "jol-header-cart-view",
+  "main": "view.js",
   "scripts": [
     "view.js"
   ],
