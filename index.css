@@ -1,0 +1,131 @@
+
+/* === Join: Cart === */
+
+.jol-header-cart {
+  height: 40px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #565656;
+  padding: 0 10px;
+
+  /* fix animation bug in Chrome 39(+?) */
+  -webkit-backface-visibility: hidden;
+
+}
+
+.jol-header-cart__icon,
+.jol-header-cart__hospital,
+.jol-header-cart__extras,
+.jol-header-cart__price {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 40px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.csstransitions .jol-header-cart__icon,
+.csstransitions .jol-header-cart__hospital,
+.csstransitions .jol-header-cart__extras,
+.csstransitions .jol-header-cart__price {
+  transition: opacity 1s;
+}
+
+.jol-header-cart__icon {
+  float: left;
+}
+
+.jol-header-cart__price {
+  float: right;
+  font-size: 18px;
+}
+
+.jol-header-cart.is-fixed {
+  position: static !important; /* FIXME: override crappy JS with crappy JS - The .is-fixed utility class should be named .u-fixed - .is- should be reserved for states */
+}
+
+@media (max-width: 959px) {
+
+  .jol-header-cart.is-static {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .jol-header-cart.is-fixed {
+    position: fixed !important; /* FIXME: override crappy JS with crappy JS - The .is-fixed utility class should be named .u-fixed - .is- should be reserved for states */
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+}
+
+@media (min-width: 60em) {
+
+  .jol-header-cart {
+    border-radius: 2px;
+  }
+
+}
+
+@media (max-width: 30em), (min-width: 60em) {
+
+  .jol-header-cart__hospital,
+  .jol-header-cart__extras {
+    max-width: 170px;
+  }
+
+}
+
+/* === PRODUCT CART - SPREADOUT === */
+
+.jol-header-cart--stretched.has-hospital.has-extras .jol-header-cart__hospital + .jol-header-cart__extras:before {
+  content: "&\ ";
+}
+
+/* === PRODUCT CART - CONDENSED === */
+
+.jol-header-cart--condensed.has-hospital.has-extras .jol-header-cart__hospital,
+.jol-header-cart--condensed.has-hospital.has-extras .jol-header-cart__extras {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.jol-header-cart--condensed.has-hospital.has-extras .jol-header-cart__products {
+  padding-top: 6px;
+}
+
+/* === PRODUCT CART - Updating === */
+
+.jol-header-cart__price {
+  opacity: 1;
+}
+
+.csstransitions .jol-header-cart__price {
+  transition: opacity 0.75s 0.1s;
+}
+
+.jol-header-cart.is-loading .jol-header-cart__price {
+  opacity: 0;
+}
+
+.jol-header-cart__updating {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  opacity: 0;
+}
+
+.csstransitions .jol-header-cart__updating {
+  transition: opacity 0.75s 0.1s;
+}
+
+.jol-header-cart.is-loading .jol-header-cart__updating {
+  opacity: 1;
+}
