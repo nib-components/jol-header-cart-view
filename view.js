@@ -8,7 +8,9 @@ var mqclass = require('mq-class');
 module.exports = View.extend({
 
   elements: {
-    '.js-total-price': 'totalPrice'
+    '.js-hospital-product-name':  'hospitalProductName',
+    '.js-extras-product-name':    'extrasProductName',
+    '.js-total-price':            'totalPrice'
   },
 
   /**
@@ -32,6 +34,26 @@ module.exports = View.extend({
     } else {
       this.el.classList.remove('is-loading');
     }
+    return this;
+  },
+
+  /**
+   * Set the hospital product name which is displayed
+   * @param   {string} name
+   * @returns {View}
+   */
+  setHospitalProductName: function(name) {
+    this.hospitalProductName.textContent = name;
+    return this;
+  },
+
+  /**
+   * Set the extras product name which is displayed
+   * @param   {string} name
+   * @returns {View}
+   */
+  setExtrasProductName: function(name) {
+    this.extrasProductName.textContent = name;
     return this;
   },
 
