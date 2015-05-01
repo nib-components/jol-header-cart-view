@@ -1,5 +1,6 @@
 var View = require('view');
 var mqclass = require('mq-class');
+var decimal = require('format-decimal');
 
 /**
  * The cart view
@@ -44,6 +45,13 @@ module.exports = View.extend({
    */
   setHospitalProductName: function(name) {
     this.hospitalProductName.textContent = name;
+
+    if (name === '') {
+      this.el.classList.remove('has-hospital');
+    } else {
+      this.el.classList.add('has-hospital');
+    }
+
     return this;
   },
 
@@ -54,6 +62,13 @@ module.exports = View.extend({
    */
   setExtrasProductName: function(name) {
     this.extrasProductName.textContent = name;
+
+    if (name === '') {
+      this.el.classList.remove('has-extras');
+    } else {
+      this.el.classList.add('has-extras');
+    }
+
     return this;
   },
 
@@ -63,6 +78,7 @@ module.exports = View.extend({
    * @returns {View}
    */
   setTotalPrice: function(price) {
+    price = decimal.format(price, {places: 2, separator: ','});
     this.totalPrice.innerHTML = '$'+price+'*';
     return this;
   }
